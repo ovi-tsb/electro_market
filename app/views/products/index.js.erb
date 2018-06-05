@@ -1,0 +1,21 @@
+<% js = escape_javascript(
+  
+  
+    render(
+  #     $(".buttons").onclick(function () {
+  #   if ($(this).hasId('grid')) {
+
+  #   }else{
+
+  #   }
+
+  # });
+
+      :partial => 'products/grid',
+      :locals => { :products => @products }
+    )
+  
+
+    
+) %>
+$("#filterrific_results").html("<%= js %>");

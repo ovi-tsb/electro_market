@@ -1,0 +1,15 @@
+= simple_form_for ([@product, @picture]), html: { multipart: true } do |f|
+  - if @picture.errors.any?
+    #errors
+      %h2
+        = pluralize(@picture.errors.count, "error")
+        prevented this Picture from saving
+      %ul
+        - @picture.errors.full_messages.each do |msg|
+          %li = msg
+  - else
+    .form-group
+      = f.file_field :image, :multiple => true, name: "picture[image]", id: "file", :required => 'required'
+      
+      %br
+      = f.button :submit, "Create", id: "create",:disabled => true

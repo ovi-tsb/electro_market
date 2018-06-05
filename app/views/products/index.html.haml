@@ -1,0 +1,60 @@
+/ %h1 Products
+= form_for_filterrific( @filterrific, url: products_path , html: { id: :manual_filterrific_form }) do |f|
+  
+  .top_filters
+    .row
+      .col-sm-6.col-md-6.sorted_by
+        .chardin_box{ :'data-position' => 'top', :'data-intro' => 'Change the sorting.' }
+          %label Sorted by
+          = f.select :sorted_by, @filterrific.select_options[:sorted_by],{},{ :class => 'filterrific-periodically-observed ' }
+      / .col-md-1.buttons
+      /   = link_to  :partial => 'products/list' , :id => 'list', remote: true do
+      /     %span.glyphicon.glyphicon-th-list
+      /   = link_to  :partial => 'products/grid', :id => 'grid', remote: true do
+      /     %span.glyphicon.glyphicon-th
+
+      .col-sm-6.col-md-6.search-product
+        .chardin_box{ :'data-position' => 'top', :'data-intro' => 'Search by first name, last name, or email.', }
+          = f.text_field :search_query, placeholder: " Search...",:class => 'filterrific-periodically-observed search'
+        
+          / = f.button :submit do |f|
+          /   %i.glyphicon.glyphicon-search 
+  .separator
+    %hr  
+  / %button{ :'data-target' => "#demo", :'type' => "button" ,:class =>'btn btn-info ', :'data-toggle'=>"collapse"} Simple Button
+
+  .row  
+    .filter-zone.col-md-2.col-sm-2
+      .left-filtering.form-group.chardin_box{ :'data-position' => 'top', :'data-intro' => 'Filter by category.' }
+        %label Category
+        = f.select(:with_category_id, @filterrific.select_options[:with_category_id], { :include_blank => '- Any -' },{ :class => 'form-control filterrific-periodically-observed' })
+
+      .left-filtering.form-group.chardin_box{ :'data-position' => 'top', :'data-intro' => 'Filter by brand.' }
+        %label Brand
+        = f.select(:with_brand_id, @filterrific.select_options[:with_brand_id],{ :include_blank => '- Any -' },{ :class => 'form-control filterrific-periodically-observed' })
+      .left-filtering
+        %label Price
+        = f.text_field(:with_min_price,{ :class => 'form-control filterrific-periodically-observed ', placeholder: "min" })
+      .left-filtering 
+        = f.text_field(:with_max_price,{ :class => 'form-control filterrific-periodically-observed ', placeholder: "max" })
+          
+      / .left-filtering
+          
+      / = f.submit "Update",{ :class => 'btn btn-sm btn-primary left-filtering ' }
+      / %br
+      / %br
+      .left-filtering{ :'data-position' => 'bottom', :'data-intro' => 'Reset the filter settings to defaults.' }
+        = link_to "Reset filters", reset_filterrific_url, :class => 'btn btn-info'
+    
+  
+    .product-list.col-md-10.col-sm-10
+      = render :partial => 'products/grid', remote: true,:locals => { :products => @products }
+  
+    
+  :javascript
+    
+    $('#overlayTrigger').click(function(event) {
+      event.preventDefault();
+      $('body').chardinJs('start');
+    }); 
+  

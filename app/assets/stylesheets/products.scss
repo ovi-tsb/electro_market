@@ -1,0 +1,126 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.product-list {
+  margin-left: 0px;
+}
+#filterrific_results{
+  margin: 0 auto;
+  hr {
+    background-color: #9b9b9b;
+    height: 1px;
+  }
+} 
+.separator {
+  hr {
+    background-color: #9b9b9b;
+    height: 1px;
+    margin-top: 8px;
+    margin-bottom: -4px;
+  }
+}
+.price_tag{
+  color: #000;
+  font-weight: 500;
+}
+.filter-zone{
+  margin-left: 0px;
+  
+}
+.left-filtering{
+  width: 100px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+.search {
+  margin-left: 0;
+  border-radius: 20px;
+  float: right;
+  padding-left: 10px;
+}
+.search-product {
+  button{
+    display: none;
+    margin-left: -23px;
+    vertical-align: middle;
+    background: transparent; 
+    border: none;
+    padding: 0;
+  }
+}
+::placeholder {
+  line-height: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+
+}
+.top_filters  {
+  margin-bottom: 0px;
+  line-height: 5px;
+}
+
+.sorted_by {
+  border: 0px solid red;
+}
+.pagins {
+  border: 0px solid red;
+}
+.info-page {
+  margin-top: 25px;
+  border: 0px solid red;
+  margin-right: 40px;
+}
+.form_image img{
+  max-width: 100px;
+}
+.no-image {
+ 
+}
+.no-image img {
+  
+  margin: 34px auto;
+}
+.details {
+  float: left;
+}
+/////////////////////////////
+@media (min-width: 800px) and (max-width: 1200px) {
+  .sorted_by {
+    border: 0px solid red;
+    width: 300px;
+  }
+  .info-page {
+
+  }
+  .no-image img{
+    margin: 26px auto;
+  }
+  .search-product {
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 800px) {
+  .left-filtering{
+    width: 100px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 10px;
+  }
+  .no-image img{
+    margin: 26px auto;
+  }
+  .search-product {
+    margin-top: -20px;
+  }
+}
+@media (max-width: 545px) {
+  .search-product input{
+    width: 110px;
+  }
+  .search-product {
+    margin-top: -20px;
+  }
+  
+}

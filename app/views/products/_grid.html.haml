@@ -1,0 +1,32 @@
+.container
+  #filterrific_results
+    .row
+      .col-md-7.col-sm-6.col-xs-12
+        .pagins.chardin_box{ :'data-position' => 'top', :'data-intro' => "will_paginate's paginator works as expected." }
+          = will_paginate @products, renderer: BootstrapPagination::Rails
+      .col-md-4.col-sm-4
+        .chardin_box.info-page{ :'data-position' => 'bottom', :'data-intro' => "will_paginate's entries info works as expected." }
+          = page_entries_info @products, :model => 'product'
+        .chardin_box{ :'data-position' => 'bottom', :'data-intro' => 'Spinner indicates update.' }
+          = render_filterrific_spinner
+    .row
+      #pins.transitions-enabled
+        -@products.each do |product|
+          .box.panel.panel-default.col-sm-6.col-md-3.col-xs-12 
+            .front_image
+              - if product.pictures.blank?
+                .no-image
+                  = image_tag("no-image-available.png",  alt: "bicycle-01", class: "img-responsive") 
+              -else
+                = link_to image_tag(product.pictures.first.image_url(:thumb).to_s), product 
+            .panel-body
+              %h4= link_to truncate(product.name, :length => 20), product, { style: 'text-decoration: underline;  font-weight: 500;' }
+              .price
+                %p.price_tag
+                  = number_to_currency(product.price)
+              %p
+                Created at - 
+                = product.created_at.to_date.to_s(:long)
+            / %hr
+    .chardin_box{ :'data-position' => 'top', :'data-intro' => "will_paginate's paginator works as expected." }
+      = will_paginate @products, renderer: BootstrapPagination::Rails

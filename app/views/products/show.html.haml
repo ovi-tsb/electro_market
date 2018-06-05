@@ -1,0 +1,38 @@
+.container
+  
+  .show-product
+    .row
+      .col-sm-12.col-md-6 
+        - if @picture.blank?
+          %h3 No photo yet
+        -else
+         
+          .main_image
+            = image_tag @picture.first.image_url().to_s, class: 'custom img-responsive'
+          
+          - @picture.each do |picture|
+            
+            %ul.thumbnails
+              %li
+                =link_to picture.image_url(picture) do
+                  =image_tag picture.image_url(:small_thumb).to_s, class: 'thumbnails_img img-responsive'
+
+                .link_img  
+                  - if current_user.try(:admin?)
+                    = link_to "Remove", product_picture_path(@product, picture), method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-sm btn-danger"
+
+      .col-sm-12.col-md-6.details
+        %h3= @product.name
+        %hr
+        %p.description= simple_format(@product.description)
+        .price
+          %p
+            = number_to_currency(@product.price)
+              
+          %br/
+          #links
+            = link_to "Back", :back, class: "btn btn-sm btn-default"
+            - if current_user.try(:admin?)
+              = link_to "Add Image", new_product_picture_path(@product), class: "btn btn-sm btn-default"
+              = link_to "Edit", edit_product_path(@product), class: "btn btn-sm btn-default"
+              = link_to "Delete", product_path(@product), method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-sm btn-default"

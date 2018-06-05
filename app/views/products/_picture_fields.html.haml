@@ -1,0 +1,8 @@
+.nested-fields
+  .field
+    = f.label :type_of
+    = f.select :type_of, [ 'First Type', 'Second Type' ], :required => true
+  .field
+    = f.label :image, "File to submit"
+    = f.file_field :image, :required => true
+  = link_to_remove_association "Remove file", f

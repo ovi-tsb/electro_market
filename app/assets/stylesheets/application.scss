@@ -1,0 +1,192 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require 'masonry/transitions'
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+  body {
+   background: #E9E9E9;
+  }
+ nav {
+   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+   .navbar-brand {
+     a {
+       color: #BD1E23;
+       font-weight: bold;
+       &:hover {
+         text-decoration: none;
+       }
+     }
+   }
+ }
+ 
+
+ #edit_page {
+   .current_image {
+     img {
+       display: block;
+       margin: 20px 0;
+     }
+   }
+ }
+
+textarea {
+  min-height: 250px;
+}
+.alert-info {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  z-index: 999;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  background: rgba(0, 153, 255, 0.7);
+}
+ .navbar-right {
+   p {
+     padding: 14px 0 0 10px;
+     float: left;
+     color: #26ad26;
+   }
+ }
+ .btn-default{
+   margin-bottom: 30px;
+ }
+ .name{
+   text-transform: capitalize;
+ }
+ .table th {
+   background: #9bceef;
+
+ }
+ .btn-primary {
+   margin-top: 25px;
+ }
+
+.pagination {
+    font-size: 11px;
+}
+
+.pagination > * {
+    margin-right: 0.1em;
+    padding: 0.1em 0.2em;
+}
+
+.pagination a:hover {
+    background: #202020 none repeat scroll 0 0;
+    
+}
+
+.pagination a:active {
+    text-shadow: none;
+}
+
+.pagination .current {
+    background: #202020 none repeat scroll 0 0;
+    color: white;
+    text-shadow: 1px 1px 1px #171717;
+}
+
+.pagination .disabled {
+    color: #C0C0C0;
+}
+.bottom-pagination {
+  margin-left: 0 auto;
+}
+#pins {
+  
+  
+  .box {
+    margin: 4px;
+    width: 300px;
+    min-height:360px;
+    max-height:360px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.42);
+    border-radius: 7px;
+    text-align: center;
+    img {
+      width: 90%;
+    }
+    .panel-body {
+      padding: 0px;
+      h4 {
+        margin: 0 0 10px 0;
+      }
+      .description {
+        color: #868686;
+        line-height: 1.75;
+        margin: 0;
+      }
+    }
+    .panel-footer {
+      padding: 20px 35px;
+      p {
+        margin: 0;
+      }
+      .user {
+        padding-top: 8px;
+      }
+    }
+  }
+}
+//////////////////////////////////
+@media (min-width: 800px) and (max-width: 1200px) {
+  #pins {
+    .box {
+      margin: 4px;
+      width: 250px;
+      min-height:310px;
+      max-height:310px;
+      img {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media (min-width: 550px) and (max-width: 800px) {
+  #pins {
+    margin: 0 auto;
+    .box {
+      margin: 4px;
+      width: 250px;
+      max-width: 100%;
+      min-height:310px;
+      max-height:310px;
+      img {
+        width: 80%;
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  #pins {
+    margin: 0 auto;
+    .box {
+      margin: 4px;
+      width: 250px;
+      max-width: 100%;
+      min-height:310px;
+      max-height:310px;
+      img {
+        width: 80%;
+      }
+    }
+  }
+}

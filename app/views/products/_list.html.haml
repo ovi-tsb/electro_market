@@ -1,0 +1,27 @@
+
+#filterrific_results
+  .row
+    .col-md-8.col-sm-8
+      .chardin_box{ :'data-position' => 'top', :'data-intro' => "will_paginate's paginator works as expected." }
+        = will_paginate @products, renderer: BootstrapPagination::Rails
+      
+    .col-md-4.col-sm-4
+      .chardin_box.info-page{ :'data-position' => 'bottom', :'data-intro' => "will_paginate's entries info works as expected." }
+        = page_entries_info @products, :model => 'product'
+      .chardin_box{ :'data-position' => 'bottom', :'data-intro' => 'Spinner indicates update.' }
+        = render_filterrific_spinner
+  .row
+    #pins
+      -@products.each do |product|
+        .box.panel.panel-default  
+          %h4= link_to product.name, product, { style: 'text-decoration: underline;  font-weight: 500;' }
+          %p.price_tag
+            $ 
+            = product.price
+          %p
+            Created at - 
+            = product.created_at.to_date.to_s(:long)
+          %hr
+  .chardin_box{ :'data-position' => 'top', :'data-intro' => "will_paginate's paginator works as expected." }
+    = will_paginate @products, renderer: BootstrapPagination::Rails
+    
